@@ -1,0 +1,15 @@
+output/
+.env
+competitive_intel_config.yaml
+results.txt
+.claude/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.DS_Store
