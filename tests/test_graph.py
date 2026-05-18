@@ -23,6 +23,8 @@ class TestBuildGraph:
         mock_search = MagicMock()
         with patch("competitive_intel.agents.researcher.get_llm", return_value=mock_llm), \
              patch("competitive_intel.agents.researcher.get_search_tool", return_value=mock_search), \
+             patch("competitive_intel.agents.researcher._canonicalize_companies",
+                   side_effect=lambda llm, companies, industry: {c: c for c in companies}), \
              patch("competitive_intel.agents.analyst.get_llm", return_value=mock_llm), \
              patch("competitive_intel.agents.writer.get_llm", return_value=mock_llm):
             graph = build_graph(cfg)
@@ -52,6 +54,8 @@ class TestBuildGraph:
 
         with patch("competitive_intel.agents.researcher.get_llm", return_value=mock_researcher_llm), \
              patch("competitive_intel.agents.researcher.get_search_tool", return_value=mock_search), \
+             patch("competitive_intel.agents.researcher._canonicalize_companies",
+                   side_effect=lambda llm, companies, industry: {c: c for c in companies}), \
              patch("competitive_intel.agents.analyst.get_llm", return_value=mock_analyst_llm), \
              patch("competitive_intel.agents.writer.get_llm", return_value=mock_writer_llm):
             graph = build_graph(cfg)
@@ -84,6 +88,8 @@ class TestBuildGraph:
 
         with patch("competitive_intel.agents.researcher.get_llm", return_value=mock_llm), \
              patch("competitive_intel.agents.researcher.get_search_tool", return_value=mock_search), \
+             patch("competitive_intel.agents.researcher._canonicalize_companies",
+                   side_effect=lambda llm, companies, industry: {c: c for c in companies}), \
              patch("competitive_intel.agents.analyst.get_llm", return_value=analyst_llm), \
              patch("competitive_intel.agents.writer.get_llm", return_value=writer_llm):
             graph = build_graph(cfg)

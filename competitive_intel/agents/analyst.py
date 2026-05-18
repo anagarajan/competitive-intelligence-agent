@@ -1,4 +1,5 @@
 import json
+import re
 from typing import Callable
 
 from competitive_intel.config import Config
@@ -76,6 +77,8 @@ def make_analyst_node(config: Config) -> Callable[[dict], dict]:
             try:
                 response = llm.invoke(messages)
                 content = response.content if hasattr(response, "content") else str(response)
+                content = re.sub(r"^```(?:json)?\s*", "", content.strip(), flags=re.IGNORECASE)
+                content = re.sub(r"\s*```$", "", content.strip())
                 parsed = json.loads(content)
                 return {**state, "analyst_output": parsed, "errors": errors}
             except Exception as exc:

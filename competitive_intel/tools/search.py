@@ -1,5 +1,5 @@
-from langchain_community.tools.tavily_search import TavilySearchResults
+from langchain_tavily import TavilySearch
 
 
-def get_search_tool() -> TavilySearchResults:
-    return TavilySearchResults(max_results=5)
+def get_search_tool() -> TavilySearch:
+    return TavilySearch(max_results=5, topic="news")

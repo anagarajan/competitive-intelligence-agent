@@ -1,5 +1,8 @@
 output/
 .env
+competitive_intel_config.yaml
+results.txt
+.claude/
 __pycache__/
 *.pyc
 *.pyo
