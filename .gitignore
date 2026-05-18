@@ -1,6 +1,7 @@
 output/
 .env
 competitive_intel_config.yaml
+competitive_intel_agent_prompt.md
 results.txt
 .claude/
 __pycache__/
